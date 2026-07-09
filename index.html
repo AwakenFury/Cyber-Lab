@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Deck - Command System</title>
+    <style>
+        :root {
+            --bg-color: #05070a;
+            --card-bg: #0b0f19;
+            --accent-cyan: #00f0ff;
+            --accent-green: #39ff14;
+            --text-main: #e2e8f0;
+            --text-muted: #64748b;
+            --border-color: #1e293b;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        header {
+            grid-column: 1 / -1;
+            border-bottom: 2px solid var(--accent-cyan);
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        h1 {
+            color: #fff;
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        .tagline {
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .panel {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            box-shadow: inset 0 0 15px rgba(0, 240, 255, 0.05);
+        }
+
+        .panel-title {
+            color: var(--accent-green);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        /* Specs List styling */
+        .spec-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 8px 15px;
+            font-size: 0.9rem;
+        }
+
+        .spec-label {
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        /* Tech interface mock elements */
+        .system-status {
+            font-family: monospace;
+            background: #020408;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px dashed var(--border-color);
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .status-value {
+            color: var(--accent-green);
+        }
+
+        /* Visual placeholder styling */
+        .deck-preview {
+            grid-column: span 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0b1424 0%, #05070a 100%);
+            border: 2px solid var(--accent-cyan);
+            min-height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 1025px) {
+            .deck-preview {
+                grid-column: span 1;
+            }
+        }
+
+        .glow-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px double var(--accent-cyan);
+            box-shadow: 0 0 20px var(--accent-cyan);
+            animation: pulse 4s infinite linear;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes pulse {
+            0% { transform: rotate(0deg); box-shadow: 0 0 15px var(--accent-cyan); }
+            50% { box-shadow: 0 0 30px var(--accent-green); border-color: var(--accent-green); }
+            100% { transform: rotate(360deg); box-shadow: 0 0 15px var(--accent-cyan); }
+        }
+
+        footer {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard">
+    <header>
+        <div>
+            <h1>Cyber Deck</h1>
+            <div class="tagline">Modular Tabletop Command System</div>
+        </div>
+        <div style="color: var(--text-muted); font-family: monospace;">SYS_STATUS: ACTIVE</div>
+    </header>
+
+    <!-- Column 1: Key Features & Overview -->
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="panel">
+            <div class="panel-title">Key Features</div>
+            <ul style="list-style-type: square; padding-left: 20px; margin: 0; line-height: 1.6; font-size: 0.9rem;">
+                <li>Open Air / Showcase Design</li>
+                <li>Custom Water Cooling Loop</li>
+                <li>High Performance NVMe Storage</li>
+                <li>Modular Hardware Mounts</li>
+                <li>Integrated Monitoring Display</li>
+                <li>Multi-Color RGB Control</li>
+            </ul>
+        </div>
+
+        <div class="panel">
+            <div class="panel-title">System Overview</div>
+            <div class="spec-grid">
+                <div class="spec-label">CPU</div><div>Intel Core i9-13900K</div>
+                <div class="spec-label">COOLING</div><div>Custom Water Loop</div>
+                <div class="spec-label">RAM</div><div>64GB DDR5</div>
+                <div class="spec-label">GPU</div><div>NVIDIA RTX 4070</div>
+                <div class="spec-label">STORAGE</div><div>4x NVMe M.2 Gen4</div>
+                <div class="spec-label">OS</div><div>Windows 11 / Linux</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Column 2: Center Showcase -->
+    <div class="panel deck-preview">
+        <div class="glow-circle">
+            <span style="font-family: monospace; font-size: 0.8rem; color: #fff;">AWAKENFURY</span>
+        </div>
+        <p style="margin-top: 20px; font-weight: bold; letter-spacing: 3px; text-transform: uppercase;">Hardware Matrix</p>
+        <div style="position: absolute; bottom: 10px; font-size: 0.7rem; color: var(--text-muted);">CUSTOM • MODULAR • POWERFUL</div>
+    </div>
+
+    <!-- Column 3: Live Telemetry & Expansion -->
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="panel">
+            <div class="panel-title">Front Panel Interface</div>
+            <div class="system-status">
+                <div class="status-item"><span>CPU TEMP</span><span class="status-value">42°C</span></div>
+                <div class="status-item"><span>GPU LOAD</span><span class="status-value">12%</span></div>
+                <div class="status-item"><span>RAM USAGE</span><span class="status-value">36%</span></div>
+                <div class="status-item"><span>PUMP SPEED</span><span class="status-value">2200 RPM</span></div>
+                <div class="status-item"><span>FLOW RATE</span><span class="status-value">1.2 L/Min</span></div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-title">Modular Expansion</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;">
+                Hot-swappable bays ready for:
+                <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 5px;">
+                    <span style="background: #1e293b; padding: 3px 8px; border-radius: 3px; color: #fff;">Capture Cards</span>
+                    <span style="background: #1e293b; padding: 3px 8px; border-radius: 3px; color: #fff;">AI Accelerators</span>
+                    <span style="background: #1e293b; padding: 3px 8px; border-radius: 3px; color: #fff;">Storage Array</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        ONE DECK. INFINITE POSSIBILITIES. &copy; 2026 AWAKENFURY SYSTEMS.
+    </footer>
+</div>
+
+</body>
+</html>
